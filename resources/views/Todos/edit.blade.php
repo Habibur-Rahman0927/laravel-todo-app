@@ -1,0 +1,49 @@
+@extends('layouts.app')
+
+
+@section('title')
+    Update Todo
+@endsection
+
+@section('content')
+    <h1 class="text-center my-5">Update Todo</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card card-default">
+                    <div class="card-header">Todos</div>
+                    <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="list-group">
+                                    @foreach ($errors->all() as $error)
+                                        {{$error}}
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                       <form action="/todos/{{$todo->id}}/update-todo" method="POST">
+                        @csrf
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" value="{{$todo->name}}">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <textarea name="description" rows="5" cols="5" class="form-control">
+                                    {{$todo->description}}
+                                </textarea>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="btncheck1">Is Completed</label>
+                                <input type="checkbox" id="btncheck1" name="completed">
+                            </div>
+                            <br>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-success">Create Todo</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+@endsection

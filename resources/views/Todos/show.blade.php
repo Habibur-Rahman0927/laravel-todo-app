@@ -18,14 +18,12 @@
                                     {{$todo->name}}
                                 </h3>
                                 {{$todo->description}}
-                                {{-- <button 
-                                    class="btn-sm btn-primary float-end">
-                                    view
-                                </button> --}}
                             </li>
                         </ul>
                     </div>
                 </div>
+                <a href="/todos/{{$todo->id}}/edit" class="btn btn-info my-2">Edit</a>
+                <a href="/todos/{{$todo->id}}/delete" class="btn btn-danger my-2">Delete</a>
             </div>
         </div>
 @endsection
